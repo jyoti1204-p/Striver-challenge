@@ -133,3 +133,38 @@ class Solution {
         
     }
 } *********** COMPLEXITY IS (N*N)
+
+
+
+QUESTION 3) NEXT PERMUTATION
+class Solution {
+    
+        // 1)Brute force ************ find all permutation using backtracking using n! time complexity and then find the next permutation.
+        
+        // 2)using c++ inbuilt function i.e. (next-permutation(arr,arr+3));
+        
+        //optimal *************1)traverse the array from back if(arr[i]<=arr[i+1]) then stop and store that index into index1;  2)again traverse the arrys from back and if and element just then index1 is found then stopaqnd store that index also as index2.               3) swap index1 and index2      4)reverse all the elements after index1
+        
+    public void nextPermutation(int[] A) {
+         if(A == null || A.length <= 1) return;
+        int i = A.length - 2;
+        while(i >= 0 && A[i] >= A[i + 1]) i--; 
+        if(i >= 0) {                           
+            int j = A.length - 1;              
+            while(A[j] <= A[i]) j--;      
+            swap(A, i, j);                     
+        }
+        reverse(A, i + 1, A.length - 1);      
+}
+
+public void swap(int[] A, int i, int j) {
+    int tmp = A[i];
+    A[i] = A[j];
+    A[j] = tmp;
+}
+
+public void reverse(int[] A, int i, int j) {
+    while(i < j) swap(A, i++, j--);
+}
+
+} ****************COMPLEXITY IS LINEAR I.E. N
