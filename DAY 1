@@ -106,3 +106,30 @@ class Solution {
         
     }
 }
+
+
+
+QUESTIONS2) PASCAL TRIANGLE 
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        //WE'LL STORE THE PASCAL TRIANGLE INTO 2-D ARRAY IF WE TRY TO ANALYSE THE PROBLEM WE'LL SEE ONE LOGIC THAT FIRST ELEMENT MEANS IF COL==0 THE ANSWER IS ALWAYS ONE AND IF I==J THEN ALSO ANSWER IS ONE AND THE REST OF THE ELEMENTS IS THE SUM OF THE PREVIOUS-ROW-1+PREVIOUS-ROW. HERE IS THE COMPLETE CODE.
+        
+        List<List<Integer>> ans=new ArrayList<>(); // for storing answer
+        List<Integer> row,prev=null; // initiliase row and col array to null
+       
+        for(int i=0;i<numRows;i++){
+            row=new ArrayList<>(); // row array
+            for(int j=0;j<=i;j++){
+                if(j==0|| j==i){
+                    row.add(1);
+                }
+             else   row.add(prev.get(j-1)+prev.get(j));
+            }
+            prev=row;
+            ans.add(row);
+        }
+        return ans;
+        
+        
+    }
+} *********** COMPLEXITY IS (N*N)
