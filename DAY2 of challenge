@@ -1,0 +1,41 @@
+**********************************************************************************************************************************************************************
+Question no 1) ************** rotate image or rotate matrix*********************
+class Solution {
+    public void rotate(int[][] matrix) {
+        //using extra space of (N*N)
+       /* int n=matrix.length;
+      int[][] ans=new int[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                ans[j][n-i-1]=matrix[i][j];
+            }
+        }
+        for(int i=0;i<n;i++){
+            matrix[i]=ans[i].clone();
+        }*/
+        
+        //optimal solution without using extra space time complexity is (N*N)
+         int n=matrix.length;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<=i;j++){  // i tak j ko isliye chla rhe taki phirse transpose na lele
+                int temp=matrix[j][i];
+                matrix[j][i]=matrix[i][j];
+                matrix[i][j]=temp;
+            }
+        }
+        for(int i=0;i<n;i++){
+            int low=0;
+            int high=n-1;
+            while(low<=high){
+                int temp=matrix[i][low];
+                matrix[i][low]=matrix[i][high];
+                matrix[i][high]=temp;
+                low++;
+                high--;
+            }
+            
+        }
+        
+    }
+} 
+********************************************************************************************************************************************************************
